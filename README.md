@@ -22,3 +22,5 @@ Fit everything in the HTML file within the character output limit. If needed, ch
 ```
 Create a single html file to play tic tac toe, where the player chooses a position using arrow keys and presses space bar to place a move. Show instructions on how to play.
 ```
+
+4. [Arkanoid](https://it33.github.io/sandbox/arkanoid.html) - Simple real-time game with bouncing ball and paddle. 
