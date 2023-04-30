@@ -1,2 +1,3 @@
-# it33output.github.io
-Site to share projects from it33
+# Sandbox 
+
+Seeing what I can knock out with GenAI tools
