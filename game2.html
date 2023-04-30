@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game by ChatGPT4</title>
+    <style>
+      canvas {
+        background-color: black;
+        display: block;
+        margin: auto;
+      }
+      #instructions {
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="cv" width="600" height="600"></canvas>
+    <div id="instructions">Use the left and right arrow keys to move the paddle and hit the ball.</div>
+    <script>
+      var cv = document.getElementById("cv");
+      var ctx = cv.getContext("2d");
+      var ballRadius = 10;
+      var x = cv.width / 2;
+      var y = cv.height - 30;
+      var dx = 2;
+      var dy = -2;
+      var paddleHeight = 10;
+      var paddleWidth = 75;
+      var paddleX = (cv.width - paddleWidth) / 2;
+      var rightPressed = false;
+      var leftPressed = false;
+
+      document.addEventListener("keydown", kd);
+      document.addEventListener("keyup", ku);
+
+      function kd(e) {
+        if (e.keyCode === 39) {
+          rightPressed = true;
+        } else if (e.keyCode === 37) {
+          leftPressed = true;
+        }
+      }
+
+      function ku(e) {
+        if (e.keyCode === 39) {
+          rightPressed = false;
+        } else if (e.keyCode === 37) {
+          leftPressed = false;
+        }
+      }
+
+      function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, cv.height - paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function updatePaddle() {
+        if (rightPressed && paddleX < cv.width - paddleWidth) {
+          paddleX += 7;
+        } else if (leftPressed && paddleX > 0) {
+          paddleX -= 7;
+        }
+      }
+
+      function checkCollision() {
+        if (
+          x + dx < ballRadius ||
+          x + dx > cv.width - ballRadius
+        ) {
+          dx = -dx;
+        }
+
+        if (y + dy < ballRadius) {
+          dy = -dy;
+        } else if (y + dy > cv.height - ballRadius) {
+          if (x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+          } else {
+            document.location.reload();
+            clearInterval(interval);
+          }
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        drawBall();
+        drawPaddle();
+        updatePaddle();
+        checkCollision();
+        x += dx;
+        y += dy;
+      }
+
+      var interval = setInterval(draw, 10);
+    </script>
+  </body>
+</html>
