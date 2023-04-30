@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pool Table</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      const sc = new THREE.Scene();
+      const cam = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const r = new THREE.WebGLRenderer();
+      r.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(r.domElement);
+      const t = createT();
+      sc.add(t);
+      const b = createB();
+      sc.add(b);
+      cam.position.z = 20;
+      cam.position.y = -10;
+      cam.rotation.x = 0.7;
+      const light = new THREE.AmbientLight(0xffffff, 0.5);
+      sc.add(light);
+      function createT() {
+        const g = new THREE.BoxGeometry(10, 5, 0.5);
+        const m = new THREE.MeshBasicMaterial({ color: 0x008000 });
+        return new THREE.Mesh(g, m);
+      }
+      function createB() {
+        const g = new THREE.SphereGeometry(0.25, 32, 32);
+        const m = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const ball = new THREE.Mesh(g, m);
+        ball.position.set(0, 0, 0.5);
+        return ball;
+      }
+      document.addEventListener('keydown', handleKey);
+      function handleKey(e) {
+        const speed = 0.1;
+        if (e.code === 'ArrowUp') b.position.y += speed;
+        if (e.code === 'ArrowDown') b.position.y -= speed;
+        if (e.code === 'ArrowLeft') b.position.x -= speed;
+        if (e.code === 'ArrowRight') b.position.x += speed;
+        checkCollision();
+      }
+      function checkCollision() {
+        const x = b.position.x;
+        const y = b.position.y;
+        const limitX = 4.75;
+        const limitY = 2.25;
+        if (x < -limitX) b.position.x = -limitX;
+        if (x > limitX) b.position.x = limitX;
+        if (y < -limitY) b.position.y = -limitY;
+        if (y > limitY) b.position.y = limitY;
+      }
+      function animate() {
+        requestAnimationFrame(animate);
+        r.render(sc, cam);
+      }
+      animate();
+    </script>
+  </body>
+</html>
