@@ -24,3 +24,11 @@ Create a single html file to play tic tac toe, where the player chooses a positi
 ```
 
 4. [Arkanoid](https://it33.github.io/sandbox/arkanoid.html) - Simple real-time game with bouncing ball and paddle. 
+
+```
+Write a single HTML file to create a game where a player controls a long red rectangle (a paddle) placed against the long edge of a square. A ball is bouncing within the square at a fixed speed and the player can use the paddle to hit the ball.
+
+Add a red text label below the game reading "Game by ChatGPT4" and append the instructions I'm writing here to that text so the viewer can see how this page was generated.
+
+Fit everything in the HTML file within the character output limit. If needed, change the variable names in the HTML to random two character names so the code will work, even if it's less legible.
+```
