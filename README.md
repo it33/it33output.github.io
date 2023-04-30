@@ -17,3 +17,8 @@ Include instructions.
 
 Fit everything in the HTML file within the character output limit. If needed, change the variable names in the HTML to random two character names so the code will work, even if it's less legible.
 ```
+3. [Tic Tac Toe board](https://it33.github.io/sandbox/tictactoe.html) - Creates a simple 2-player tic tac toe board.
+
+```
+Create a single html file to play tic tac toe, where the player chooses a position using arrow keys and presses space bar to place a move. Show instructions on how to play.
+```
