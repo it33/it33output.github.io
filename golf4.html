@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Game</title>
+<style>
+body{margin:0;}canvas{display:block;}#info{position:absolute;top:10px;left:10px;color:red;}
+</style>
+</head>
+<body>
+<div id="info">Golf game from ChatGPT4</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const s=new THREE.Scene();const c=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);const r=new THREE.WebGLRenderer();r.setSize(innerWidth,innerHeight);document.body.appendChild(r.domElement);const g=createG();s.add(g);const h=createH();s.add(h);const b=createB();s.add(b);c.position.set(0,5,10);c.lookAt(0,0,0);const l=new THREE.AmbientLight(0xffffff,0.5);s.add(l);function createG(){const a=new THREE.CircleGeometry(5,32);const b=new THREE.MeshBasicMaterial({color:0x008000});const g=new THREE.Mesh(a,b);g.rotation.x=-Math.PI/2;return g;}function createH(){const a=new THREE.CylinderGeometry(0.1,0.1,0.05,32);const b=new THREE.MeshBasicMaterial({color:0x000000});const h=new THREE.Mesh(a,b);h.position.x=(Math.random()-0.5)*8;h.position.z=(Math.random()-0.5)*8;return h;}function createB(){const a=new THREE.SphereGeometry(0.1,32,32);const b=new THREE.MeshBasicMaterial({color:0xffffff});const c=new THREE.Mesh(a,b);c.position.y=0.1;return c;}const v=new THREE.Vector3(0,0,0);const a=new THREE.Vector3(0,0,0);document.addEventListener('keydown',handleKey);function handleKey(e){const s=0.01;if(e.code==='ArrowUp')a.z=-s;if(e.code==='ArrowDown')a.z=s;if(e.code==='ArrowLeft')a.x=-s;if(e.code==='ArrowRight')a.x=s;}function animate(){requestAnimationFrame(animate);v.add(a);b.position.add(v);v.multiplyScalar(0.99);if(b.position.distanceTo(g.position)>5){v.reflect(b.position.clone().sub(g.position).normalize());}if(b.position.distanceTo(h.position)<0.2){b.position.set(0,0.1,0);v.set(0,0,0);}r.render(s,c);}animate();
+</script>
+</body>
+</html>
