@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Game</title>
+<style>
+body{margin:0;}canvas{display:block;}
+</style>
+</head>
+<body>
+<canvas id="c" width="600" height="400"></canvas>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+const r = 200;
+const hr = 5;
+const br = 5;
+
+function rp() {
+  const a = Math.random() * Math.PI * 2;
+  const d = Math.random() * (r - 2 * hr);
+  return { x: d * Math.cos(a), y: d * Math.sin(a) };
+}
+
+const h = rp();
+let b = { x: 0, y: 0 };
+let v = { x: 0, y: 0 };
+let a = { x: 0, y: 0 };
+
+function draw() {
+  ctx.clearRect(0, 0, c.width, c.height);
+  ctx.fillStyle = 'green';
+  ctx.beginPath();
+  ctx.arc(c.width / 2, c.height / 2, r, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = 'black';
+  ctx.beginPath();
+  ctx.arc(c.width / 2 + h.x, c.height / 2 + h.y, hr, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = 'white';
+  ctx.beginPath();
+  ctx.arc(c.width / 2 + b.x, c.height / 2 + b.y, br, 0, 2 * Math.PI);
+  ctx.fill();
+}
+
+document.addEventListener('keydown', (e) => {
+  const k = 0.2;
+  if (e.code === 'ArrowUp') a.y = -k;
+  if (e.code === 'ArrowDown') a.y = k;
+  if (e.code === 'ArrowLeft') a.x = -k;
+  if (e.code === 'ArrowRight') a.x = k;
+});
+
+document.addEventListener('keyup', () => {
+  a.x = a.y = 0;
+});
+
+function animate() {
+  v.x += a.x;
+  v.y += a.y;
+  b.x += v.x;
+  b.y += v.y;
+
+  if (Math.sqrt(b.x * b.x + b.y * b.y) > r - br) {
+    const angle = Math.atan2(b.y, b.x);
+    b.x = (r - br) * Math.cos(angle);
+    b.y = (r - br) * Math.sin(angle);
+    v.x *= -0.8;
+    v.y *= -0.8;
+  }
+
+  if (Math.sqrt((b.x - h.x) * (b.x - h.x) + (b.y - h.y) * (b.y - h.y)) < hr + br) {
+    b.x = b.y = 0;
+    v.x = v.y = 0;
+  }
+
+  draw();
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
