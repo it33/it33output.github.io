@@ -8,6 +8,13 @@ OpenOps is an open source AI-enhanced chat collaboration sandbox to accelerate r
 
 Unliked closed source, vendor-controlled environments for integration private conversations, workflow and generative AI, OpenOps provides an open source, customer-controlled platform for AI exploration with full data data control.
 
+
+
+| Demo | Use Case Example |
+|:---|:---|
+| [![Watch the video](https://github-production-user-asset-6210df.s3.amazonaws.com/177788/244097585-1dbe51fa-fb6c-411f-9e18-4e2c99d4c2f2.png)](https://community.mattermost.com/files/k4gdq47njfg6uxuzr5toq5eb4a/public?h=_Lu6LPIGENzL15vfKYSw3AId2yKSGAGySMH9nCRBr24) | **Discussion Summarization** - Within the OpenOps sandbox a private discussion can be analyzed and summarized by an AI bot and backend to help end users more quickly and easily consume information without any data leaving the self-contained system (see [Use Cases](#use-cases) for more examples): <br><br><br><br><br><br>   |
+
+
 | Use Case Example  | Demo |
 |:---|:---|
 | **Discussion Summarization** - Within the OpenOps sandbox a private discussion can be analyzed and summarized by an AI bot and backend to help end users more quickly and easily consume information without any data leaving the self-contained system (see [Use Cases](#use-cases) for more examples): <br><br><br><br><br><br>  | [![Watch the video](https://github-production-user-asset-6210df.s3.amazonaws.com/177788/244097585-1dbe51fa-fb6c-411f-9e18-4e2c99d4c2f2.png)](https://community.mattermost.com/files/k4gdq47njfg6uxuzr5toq5eb4a/public?h=_Lu6LPIGENzL15vfKYSw3AId2yKSGAGySMH9nCRBr24)  |
@@ -32,10 +39,7 @@ Everyone’s in a race to deploy generative AI solutions, but need to do so in a
 
 - 
 
-## What can you do with OpenOps? 
-
-
-
+## Use Cases 
 
 
 
