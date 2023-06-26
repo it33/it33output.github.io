@@ -36,7 +36,8 @@ Deploying the OpenOps sandbox includes the following componenents:
 
 ## How do I start? 
 
-- TBC
+- Local Install - [Follow instructions for local installation](https://github.com/mattermost/mattermost-plugin-ai#local). 
+- Cloud Evaluation Environment - [Follow instructions to run in cloud evaluation environment](https://github.com/mattermost/mattermost-plugin-ai#gitpod) using [GitPod](https://www.gitpod.io/) 
 
 ## Troubleshooting 
 
